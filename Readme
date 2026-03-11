@@ -1,0 +1,7 @@
+Warden and Prisoner System - Network Setup
+
+# To run the warden.c on another machine .
+    - Get the IP address of that machine and change the Macro of the prisoner1.c and priosner2.c
+    -Then you can run the server / warden file using  gcc warden.c -o server and then ./server
+    - after which you can connect both the prisoners.
+    - Also the way to disconnect is just by pressing ctrl+c.
