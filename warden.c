@@ -56,30 +56,28 @@ int main() {
         char buffer2[BUFFER_SIZE] = {0};
         int b1=read(client_fd, buffer, BUFFER_SIZE);
         int b2=read(client_fd2, buffer2, BUFFER_SIZE);
-        if(b1==0 || b2==0 ){
-            break;
-        }
+        if (b1 <= 0 || b2 <= 0) break;
         if(buffer[0]=='1' && buffer2[0]=='1'){
-            write(client_fd2,punish,BUFFER_SIZE);
-            write(client_fd,punish,BUFFER_SIZE);
+            write(client_fd2,punish,strlen(punish)+1);
+            write(client_fd,punish,strlen(punish)+1);
             printf("Each have 1 yr of jail\n");
         }
 
         if(buffer[0]=='0' && buffer2[0]=='1'){
-            write(client_fd2,punish4,BUFFER_SIZE);
-            write(client_fd,punish2,BUFFER_SIZE);
+            write(client_fd2,punish4,strlen(punish4)+1);
+            write(client_fd,punish2,strlen(punish2)+1);
             printf("Prisoner 1 is free and Prisoner 2 has 3 yr of jail\n");
         }
         if(buffer[0]=='1' && buffer2[0]=='0'){
-            write(client_fd2,punish2,BUFFER_SIZE);
-            write(client_fd,punish4,BUFFER_SIZE);
+            write(client_fd2,punish2,strlen(punish2)+1);
+            write(client_fd,punish4,strlen(punish4)+1);
             printf("Prisoner 1 has 3 yr of jail and Prisoner 2 is free\n");
         }
         if(buffer[0]=='0' && buffer2[0]=='0'){
-            write(client_fd2,punish3,BUFFER_SIZE);
-            write(client_fd,punish3,BUFFER_SIZE);
-            printf("Both Prisoner have 3 yr of jail\n");
-        }   
+            write(client_fd2,punish3,strlen(punish3)+1);
+            write(client_fd,punish3,strlen(punish3)+1);
+            printf("Both Prisoners have 2 yr of jail\n");
+        }
         fflush(stdout);
         
     }

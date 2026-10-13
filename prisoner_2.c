@@ -40,9 +40,9 @@ int main() {
         fgets(buffer, BUFFER_SIZE, stdin);
         
         send(sock, buffer, strlen(buffer), 0);
-        int bytes_received = recv(sock, buffer, BUFFER_SIZE, 0);
+        int bytes_received = recv(sock, buffer, BUFFER_SIZE-1, 0);
+        if (bytes_received <= 0) break;
         buffer[bytes_received] = '\0';
-
         printf("%s \n", buffer);
         fflush(stdout);
 
